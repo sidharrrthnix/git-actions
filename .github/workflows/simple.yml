@@ -11,4 +11,4 @@ jobs:
       - name: multiline stings
         run: |
           node -v
-          npmmm -v
+          npm -v
