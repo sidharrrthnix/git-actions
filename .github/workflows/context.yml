@@ -1,10 +1,11 @@
 # logs necessary information
 name: Context testing
-on: push
+on: [push, pull_request]
 
 jobs:
   functions:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
     steps:
       - name: dump
         run: |
@@ -19,10 +20,12 @@ jobs:
         id: github_context_step
         run: echo '${{ toJSON(github) }}'
       - name: Dump job context
+        if: success()
         run: echo '${{ toJSON(job) }}'
       - name: Dump steps context
         run: echo '${{ toJSON(steps) }}'
       - name: Dump runner context
+        if: always()
         run: echo '${{ toJSON(runner) }}'
       - name: Dump strategy context
         run: echo '${{ toJSON(strategy) }}'
