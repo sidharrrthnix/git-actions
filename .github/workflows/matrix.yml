@@ -15,9 +15,9 @@ jobs:
           - os: windows-latest
             node_version: 8
       # max-parallel: 3
-    runs-on: ${{matrix.is_ubuntu_10}}
+    runs-on: ${{matrix.os}}
     env:
-      IS_UBUNTU_10: ${{ matrix.is}}
+      IS_UBUNTU_10: ${{ matrix.is_ubuntu_10}}
     steps:
       - name: Log node version
         run: node -v
@@ -26,5 +26,5 @@ jobs:
           node-version: ${{matrix.node_version}}
       - name: Log node version
         run: |
-          echo $IS_UBUNTU_10
           node -v
+          echo $IS_UBUNTU_10
