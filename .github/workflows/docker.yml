@@ -19,7 +19,13 @@ jobs:
         with:
           entrypoint: /usr/local/bin/node
           args: -v
-
+      - uses: actions/checkout@v1
+      - name: Run a script
+        uses: docker://docker://node:17.5-alpine3.14
+        with:
+          entrypoint: ./script.sh
+          args: "Print this"
+  # chmod +x script.sh
   node-docker-image:
     runs-on: ubuntu-latest
     services:
