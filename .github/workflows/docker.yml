@@ -21,7 +21,7 @@ jobs:
           args: -v
       - uses: actions/checkout@v1
       - name: Run a script
-        uses: docker://docker://node:17.5-alpine3.14
+        uses: docker://node:17.5-alpine3.14
         with:
           entrypoint: ./script.sh
           args: "Print this"
